@@ -1,0 +1,10 @@
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+
+# place local settings in .gitconfig-local file
+[include]
+	path = ~/.gitconfig-local

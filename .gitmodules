@@ -1,0 +1,9 @@
+[submodule "vim/.vim/pack/plugins/start/vim-airline"]
+	path = vim/.vim/pack/plugins/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule "vim/.vim/pack/plugins/start/vim-beancount"]
+	path = vim/.vim/pack/plugins/start/vim-beancount
+	url = https://github.com/nathangrigg/vim-beancount
+[submodule "vim/.vim/pack/plugins/start/vim-airline-themes"]
+	path = vim/.vim/pack/plugins/start/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
