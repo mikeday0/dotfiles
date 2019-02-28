@@ -5,6 +5,10 @@ if has('win32')
     set runtimepath+=$HOME/.vim
 endif
 
+" mappings
+let mapleader = "," " leader key is comma
+let maplocalleader = "\\" " leader key is single backspace
+
 " autocommands
 
 function! InsertIfEmpty()
@@ -29,7 +33,7 @@ set softtabstop=4  " number of spaces in tab when editing
 set tabstop=4  " number of visual spaces per tab
 set shiftwidth=4 " number of visual spaces per indent
 
-set backspace=indent,eol,start
+set backspace=indent,eol,start " backspace over everything in insert mode
 
 set number " show line numbers
 set showcmd " show command in bottom bar
@@ -44,11 +48,17 @@ nnoremap <space> za
 " jk is escape
 inoremap jk <esc>
 
+let &showbreak='\\ ' " line continuation for terminal
+
 " Set fonts for gvim
 if has("gui_running")
     if has("gui_win32")
-       set guifont=Powerline_Consolas:h10:cANSI:qDRAFT
+        set guifont=Powerline_Consolas:h10:cANSI:qDRAFT
+    elseif has("gui_macvim")
+        set guifont=Menlo-Regular:hll
     endif
+
+    let &showbreak='► ' " Black Right-Pointing Pointer (U+25BA, UTF-8: 0xE2 0x96 0xBA)
     set lines=50
     set columns=100
     set guioptions-=T " No toolbar
@@ -65,10 +75,10 @@ endif
 "     set undofile " keep an undo file (undo changes after closing)
 " endif
 
-let &showbreak='\\ '
 
 " vim-airline settings
 set laststatus=2 " statusline is always visible
+let g:airline_theme='minimalist'
 " let g:airline_symbols_ascii = 1
 let g:airline#extensions#tabline#enabled = 1
 set noshowmode " vim-airline shows mode
