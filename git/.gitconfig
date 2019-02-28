@@ -8,3 +8,5 @@
 # place local settings in .gitconfig-local file
 [include]
 	path = ~/.gitconfig-local
+[core]
+	excludesfile = ~/.gitignore-global
