@@ -40,7 +40,6 @@ set showcmd " show command in bottom bar
 set showmatch " highlight matching [{()}]
 
 set background=dark
-" colorscheme solarized
 
 " space open/closes folds in normal mode
 nnoremap <space> za
@@ -50,30 +49,26 @@ inoremap jk <esc>
 
 let &showbreak='\\ ' " line continuation for terminal
 
-" Set fonts for gvim
-if has("gui_running")
-    if has("gui_win32")
-        set guifont=Powerline_Consolas:h10:cANSI:qDRAFT
-    elseif has("gui_macvim")
-        set guifont=Menlo-Regular:hll
-    endif
-
-    let &showbreak='► ' " Black Right-Pointing Pointer (U+25BA, UTF-8: 0xE2 0x96 0xBA)
-    set lines=50
-    set columns=100
-    set guioptions-=T " No toolbar
-    " set guioptions-=m " No menu
-endif
-
 " undo, backup and swap directories
-" set undodir^=~/.vim/.undo
-" set backupdir^=~/.vim/.backup//
-" set directory^=~/.vim/.swp//
+" create necessary directories if they don't exist
+set backup " keep a backup file
+if !isdirectory($HOME . "/.vimcache/backup")
+    call mkdir($HOME . "/.vimcache/backup", "p")
+endif
+set backupdir^=~/.vimcache/backup// " path separators get replaced with %
 
-" set backup " keep a backup file
-" if has('persistent_undo')
-"     set undofile " keep an undo file (undo changes after closing)
-" endif
+if !isdirectory($HOME . "/.vimcache/swp")
+    call mkdir($HOME . "/.vimcache/swp", "p",)
+endif
+set directory^=~/.vimcache/swp// " path separators get replaced with %
+
+if has('persistent_undo')
+    set undofile " keep an undo file (undo changes after closing)
+    if !isdirectory($HOME . "/.vimcache/undo")
+        call mkdir($HOME . "/.vimcache/undo", "p",)
+    endif
+    set undodir^=~/.vimcache/undo
+endif
 
 
 " vim-airline settings
@@ -88,4 +83,20 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.linenr = '' " no symbol displayed
 
+" gvim stuff
+if has("gui_running")
+    if has("gui_win32")
+        set guifont=Powerline_Consolas:h10:cANSI:qDRAFT
+    elseif has("gui_macvim")
+        set guifont=Menlo-Regular:h11
+    endif
+
+    colorscheme solarized
+    let g:airline_theme='solarized'
+    let &showbreak='► ' " Black Right-Pointing Pointer (U+25BA, UTF-8: 0xE2 0x96 0xBA)
+    set lines=62
+    set columns=100
+    set guioptions-=T " No toolbar
+    " set guioptions-=m " No menu
+endif
 
