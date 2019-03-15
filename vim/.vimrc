@@ -41,6 +41,9 @@ set showmatch " highlight matching [{()}]
 
 set background=dark
 
+set noshowmode " vim-airline shows mode instead
+set laststatus=2 " statusline is always visible
+
 " space open/closes folds in normal mode
 nnoremap <space> za
 
@@ -72,31 +75,25 @@ endif
 
 
 " vim-airline settings
-set laststatus=2 " statusline is always visible
 let g:airline_theme='minimalist'
-" let g:airline_symbols_ascii = 1
 let g:airline#extensions#tabline#enabled = 1
-set noshowmode " vim-airline shows mode
 let g:airline_powerline_fonts = 0
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_symbols.linenr = '' " no symbol displayed
 
 " gvim stuff
 if has("gui_running")
     if has("gui_win32")
         set guifont=Powerline_Consolas:h10:cANSI:qDRAFT
     elseif has("gui_macvim")
-        set guifont=Menlo-Regular:h11
+        set guifont=MesloLGSDZForPowerline-Regular:h11
     endif
 
+    " populate g:airline_symbols with powerline symbols
+    let g:airline_powerline_fonts = 1
     colorscheme solarized
     let g:airline_theme='solarized'
     let &showbreak='► ' " Black Right-Pointing Pointer (U+25BA, UTF-8: 0xE2 0x96 0xBA)
     set lines=62
     set columns=100
     set guioptions-=T " No toolbar
-    " set guioptions-=m " No menu
 endif
 
