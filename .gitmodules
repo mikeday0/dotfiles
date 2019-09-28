@@ -10,3 +10,6 @@
 [submodule "vim/.vim/pack/plugins/start/vim-colors-solarized"]
 	path = vim/.vim/pack/plugins/start/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/.vim/pack/plugins/start/vim-localvimrc"]
+	path = vim/.vim/pack/plugins/start/vim-localvimrc
+	url = https://github.com/embear/vim-localvimrc.git
