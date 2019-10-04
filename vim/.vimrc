@@ -85,6 +85,8 @@ if has("gui_running")
         set guifont=Powerline_Consolas:h10:cANSI:qDRAFT
     elseif has("gui_macvim")
         set guifont=MesloLGSDZForPowerline-Regular:h11
+    elseif has("gui_gtk2")
+        set guifont=Ubuntu\ Mono\ 12
     endif
 
     " populate g:airline_symbols with powerline symbols
